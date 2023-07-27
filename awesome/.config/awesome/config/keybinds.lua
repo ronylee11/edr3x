@@ -36,45 +36,6 @@ awful.keyboard.append_global_keybindings({
 
     awful.key({ modkey, "Shift" }, "q", awesome.quit, { description = "quit awesome", group = "awesome" }),
 
-    -- brightness
-    awful.key({}, "XF86MonBrightnessUp", function()
-        awful.util.spawn("brightnessctl set +5%")
-    end, { description = "Increase Brightness", group = "control" }),
-
-    awful.key({}, "XF86MonBrightnessDown", function()
-        awful.util.spawn("brightnessctl set 5%-")
-    end, { description = "Decrease Brightness", group = "control" }),
-
-    -- Audio
-    awful.key({}, "XF86AudioRaiseVolume",
-        function() volume.increase() end,
-        { description = "increase volume", group = "control" }),
-
-    awful.key({}, "XF86AudioLowerVolume",
-        function() volume.decrease() end,
-        { description = "decrease volume", group = "control" }),
-
-    awful.key({}, "XF86AudioMute",
-        function() volume.mute() end,
-        { description = "mute volume", group = "control" }),
-
-
-        -- Brightness
-	awful.key({}, "XF86MonBrightnessUp",
-        function() brightness.increase() end,
-        { description = "increase brightness", group = "control" }),
-	awful.key({}, "XF86MonBrightnessDown",
-        function() brightness.decrease() end,
-        { description = "decrease brightness", group = "control" }),
-
-    awful.key({ modkey, "Control" }, "v", function()
-        awful.spawn("pavucontrol")
-    end, { description = " Audio Contol all ", group = "control" }),
-
-    awful.key({ modkey }, "Pause", function()
-        awful.spawn("mic-toggle")
-    end, { description = "Microphone toggle", group = "control" }),
-
     -- Screenshot
     awful.key(
         { modkey },
@@ -101,6 +62,10 @@ awful.keyboard.append_global_keybindings({
               {description = "increase volume", group = "launcher"}),
     awful.key({ modkey }, "Down", function() volume.decrease() end,
               {description = "decrease volume", group = "launcher"}),
+    awful.key({ modkey, "Control" }, "v", function() awful.spawn("pavucontrol") end, 
+              { description = " Audio Contol all ", group = "control" }),
+    awful.key({ modkey }, "Pause", function() awful.spawn("mic-toggle") end, 
+              { description = "Microphone toggle", group = "control" }),
     -- Change Brightness
     awful.key({ modkey }, "Left", function() brightness.decrease() end,
               {description = "decrease brightness", group = "control"}),
