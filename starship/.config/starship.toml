@@ -1,6 +1,12 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 add_newline = true
 
+right_format = """$git_metrics$memory_usage$cmd_duration"""
+
+[battery]
+charging_symbol = ' '
+discharging_symbol = '󰂁 '
+
 [[battery.display]]
 threshold = 30
 
@@ -36,12 +42,15 @@ behind = "⇣ ×${count} "
 diverged = "⇕ ×${ahead_count}  ×${behind_count} "
 untracked = " ×${count} "
 stashed = " 📦 "
-modified = " ×${count} "
+modified = "! ×${count} "
 staged = " ×${count} "
 renamed = " ×${count} "
 deleted = "✘ ×${count} "
 style = "bright-white"
 format = "$all_status$ahead_behind"
+
+[git_metrics]
+disabled = false
 
 [hostname]
 ssh_only = false
@@ -52,8 +61,8 @@ disabled = false
 
 [memory_usage]
 format = "$symbol[${ram}(  )]($style) "
-threshold = 40 
-symbol = "  "
+threshold = 40
+symbol = "  "
 style = "#6ba4cf"
 disabled = false
 
@@ -63,12 +72,13 @@ format = "[$user]($style) @"
 show_always = true
 
 [time]
-disabled = true 
+disabled = true
 
 [package]
 disabled = true
 
 [aws]
+disabled= true
 symbol = "  "
 
 [c]

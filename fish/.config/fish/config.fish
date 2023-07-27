@@ -1,67 +1,96 @@
 set fish_greeting
-set TERM "xterm-256color"
-
-# Fish autocomplete and highlight colors
 set fish_color_normal brcyan
 set fish_color_autosuggestion '#7d7d7d'
 set fish_color_command brcyan
 set fish_color_error '#ff6c6b'
 set fish_color_param '#04cc85'
 
-# alias
 alias vi "nvim"
 alias vim "nvim"
 alias e "thunar ."
 alias x "exit"
 alias c "clear"
 alias rm "trash"
-alias ls "exa -a --icons --group-directories-first"
-alias ll "exa -lah --icons --color automatic --no-user --no-time --git --group-directories-first"
+alias lf "lfimg"
 alias cc "clang"
 alias cxx "clang++"
+alias ls "exa -a --icons --group-directories-first"
+alias ll "exa -lah --icons --color automatic --no-user --no-time --git --group-directories-first"
+alias lt "exa -lh --icons --color automatic --no-user --git -T -L 4 --ignore-glob='.git|node_modules' --group-directories-first"
 alias .. "cd .."
 alias ... "cd ../.."
 alias .... "cd ../../.."
 alias ..... "cd ../../../.."
-alias dot "nvim ~/.dotfiles"
-alias upnum "checkupdates | wc -l"
-alias idea "~/.dev/idea/bin/idea.sh"
-alias fuckyou "git push --force --no-verify"
+alias cdd 'cd "$(fd -t d . | fzf)"'
+alias dot "tmux-sessionizer ~/.dotfiles"
 alias fetch "neofetch --config ~/.config/neofetch/config.old.conf"
+alias scrkey "screenkey -s small --opacity 0.6 -p fixed -g 30%x7%+69%-2%"
 alias nodepurge "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +"
 
-# protoc ( specify relative path to .proto file after this )
-alias protoc-go "protoc --go_out=. --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=paths=source_relative" # for golang
+# git
+alias gd "git diff"
+alias gs "git status"
+alias ggpush "git push"
+alias fuckyou "git push --force"
+
+# docker
+alias dps "docker ps"
+alias dcd "docker-compose down"
+alias dcu "docker-compose up -d"
+function dex
+    docker exec -it $argv bash
+end
 
 # Rick
 alias rick "curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash"
 
-# Flutter
-alias fad "flutter pub add "
-set CHROME_EXECUTABLE "$CHROME_EXECUTABLE:/usr/bin/google-chrome"
-set PATH "$PATH":"$HOME/.pub-cache/bin"
-
 # TMUX
-alias tnew "tmux new -s" # creates new tmux session
-alias tls "tmux ls" # lists currently running sessions
-alias ta "tmux a -t " # attach to any of running session ( specify session name after this command )
-alias tkl "tmux kill-server" # kills all tmux sessions
-alias tk1 "tmux kill-session -t" # kill specific running session ( specify session name after this command )
+alias tls  "tmux ls"              # lists currently running sessions
+alias ta   "tmux a -t "           # attach to any of running session ( specify session name after this command )
+alias tnew "tmux new -s"          # creates new tmux session
+alias tkl  "tmux kill-server"     # kills all tmux sessions
+alias tk1  "tmux kill-session -t" # kill specific running session ( specify session name after this command )
+
+# nvim distros
+alias nvchad "NVIM_APPNAME=NvChad nvim"
+alias lazyvim "NVIM_APPNAME=LazyVim nvim"
+alias astrovim "NVIM_APPNAME=AstroNvim nvim"
+
+function nvims
+    set items LazyVim AstroNvim NvChad
+    set config (printf "%s\n" $items | fzf --prompt=" Neovim Config > " --height=~50% --layout=reverse --border --exit-0)
+    if [ -z $config ]
+        echo "Nothing selected"
+        return 0
+    end
+    env NVIM_APPNAME=$config nvim $argv
+end
 
 # sessionizer script
 bind \cf "tmux-sessionizer"
 
 # Path variables
-set PATH "$PATH":"$HOME/.local/scripts/"
-set PATH "$PATH":"$HOME/.dev/ghcli/bin/"
-set PATH "$PATH":"$HOME/.dev/flutter/bin"
-set PATH "$PATH":"$HOME/.dev/android-studio/bin"
+set PATH "$PATH":"$HOME/go/bin"
+set PATH "$PATH":"$HOME/.bun/bin"
 set PATH "$PATH":"$HOME/.cargo/bin"
 set PATH "$PATH":"$HOME/.cargo/env"
-set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME ; set -gx PATH $HOME/.cabal/bin /home/r3x/.ghcup/bin $PATH # ghcup-env
+set PATH "$PATH":"$HOME/.local/scripts/"
+set PATH "$PATH":"$HOME/.dev/flutter/bin"
+set PATH "$PATH":"$HOME/.dev/android-studio/bin"
 
-if status is-interactive
-    # Placeholder
-end
+# fnm
+set PATH "/home/r3x/.local/share/fnm" $PATH
+fnm env | source
+
+#pnpm
+alias p "pnpm"
+alias px "pnpx"
+set -gx PNPM_HOME "/home/r3x/.local/share/pnpm"
+set -gx PATH "$PNPM_HOME" $PATH
+
+# defaults
+export VISUAL="nvim"
+export EDITOR="nvim"
+export TERM="alacritty"
 
 starship init fish | source

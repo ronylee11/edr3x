@@ -1,33 +1,34 @@
 # Neovim Config
 
-**Base config for Neovim**
+### HomePage
 
-## Requirement
+![Greeting](https://user-images.githubusercontent.com/45848083/233694894-7c6370d0-8e57-4bbb-ace5-f626738230a0.png)
 
-### For Lsp and package specifics
+### FileTree
 
-- For some LSP we need `Node.js` and `npm`
+![nvim-tree](https://user-images.githubusercontent.com/45848083/233694988-5251c531-beca-4a8d-9a2c-ba723e0e6443.png)
 
-```sh
-paru -S nodejs npm
+### Code Environment
+
+![environment](https://user-images.githubusercontent.com/45848083/233695048-2e9889af-210b-4a4e-90c6-cc4528322a43.png)
+
+### Telescope
+
+![telescope](https://user-images.githubusercontent.com/45848083/233695134-5abbd833-74a2-4d21-8d03-5618c7784643.png)
+
+### Terminal
+![terminal](https://user-images.githubusercontent.com/45848083/233695183-b03c4d6c-8830-449a-8b8c-8c4ba9071c25.png)
+
+## Requirements
+
+```bash
+sudo pacman -S wget tar curl unzip git nodejs npm gzip xclip 
 ```
 
 - For Markdown preview we need `deno` and `webkit2gtk`
 
-```sh
-paru -S deno webkit2gtk
+```bash
+sudo pacman -S deno webkit2gtk
 ```
 
-- For prettier formatter
-
-```sh
-paru -S prettierd
-```
-
-### To copy form editor to clipboard
-
-- To do this we need tool called `xclip`
-
-```sh
-paru -S xclip
-```
+> Every plugin used can be found in `lua/r3x/plugins/`

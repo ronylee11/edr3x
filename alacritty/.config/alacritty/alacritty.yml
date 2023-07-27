@@ -1,30 +1,31 @@
-schemes:
-  tokyo-night-modified: &tokyo
-    primary:
-      background: "0x000000"
-      foreground: "0xa9b1d6"
+colors: # Tokyonight_night
+  primary:
+    background: '0x000000' # default value : '0x1a1b26' 
+    foreground: '0xc0caf5'
 
-    normal:
-      black: "0x32344a"
-      red: "0xf7768e"
-      green: "0x9ece6a"
-      yellow: "0xe0af68"
-      blue: "0x7aa2f7"
-      magenta: "0xad8ee6"
-      cyan: "0x449dab"
-      white: "0x787c99"
+  normal:
+    black:   '0x15161e'
+    red:     '0xf7768e'
+    green:   '0x9ece6a'
+    yellow:  '0xe0af68'
+    blue:    '0x7aa2f7'
+    magenta: '0xbb9af7'
+    cyan:    '0x7dcfff'
+    white:   '0xa9b1d6'
 
-    bright:
-      black: "0x444b6a"
-      red: "0xff7a93"
-      green: "0xb9f27c"
-      yellow: "0xff9e64"
-      blue: "0x7da6ff"
-      magenta: "0xbb9af7"
-      cyan: "0x0db9d7"
-      white: "0xacb0d0"
+  bright:
+    black:   '0x414868'
+    red:     '0xf7768e'
+    green:   '0x9ece6a'
+    yellow:  '0xe0af68'
+    blue:    '0x7aa2f7'
+    magenta: '0xbb9af7'
+    cyan:    '0x7dcfff'
+    white:   '0xc0caf5'
 
-colors: *tokyo
+  indexed_colors:
+    - { index: 16, color: '0xff9e64' }
+    - { index: 17, color: '0xdb4b4b' }  
 
 font:
   normal:
@@ -36,37 +37,45 @@ font:
     style: Bold
 
   italic:
-    family: Fira Code Nerd Font
+    family: Iosevka Nerd Font
     style: Italic
 
   bold_italic:
-    family: Fira Code Nerd Font
+    family: Iosevka Nerd Font
     style: Bold Italic
 
-  size: 9
+  size: 8
 
 window:
+  dynamic_padding: true
   decorations: none
-  opacity: 0.55
+  opacity: 0.45
+    
+scrolling:
   history: 10000
-  semantic_escape_chars: ',│`|:"'' ()[]{}<>'
+
+selection:
+  semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
   save_to_clipboard: true
-  live_config_reload: true
+    
+cursor:
+  style:
+    shape: Block
+    blinking: Off
       
+live_config_reload: true
+    
 shell:
   program: /usr/bin/fish
-    #  args: ["-c", "tmux"]
+  # args: ["-c", "tmux"]
 
-env:
-  TERM: xterm-256color
-    
 key_bindings:
-  - { key: V,        mods: Control|Shift, action: Paste }
-  - { key: C,        mods: Control|Shift, action: Copy }
-  - { key: Key0,     mods: Control,       action: ResetFontSize }
-  - { key: Equals,   mods: Control,       action: IncreaseFontSize }
-  - { key: Minus,    mods: Control,       action: DecreaseFontSize }
-  - { key: PageUp,   mods: Shift,         action: ScrollPageUp,   mode: ~Alt}
-  - { key: PageDown, mods: Shift,         action: ScrollPageDown, mode: ~Alt}
-  - { key: Home,     mods: Shift,         action: ScrollToTop,    mode: ~Alt}
-  - { key: End,      mods: Shift,         action: ScrollToBottom, mode: ~Alt}
+  - { key: V, mods: Control|Shift, action: Paste }
+  - { key: C, mods: Control|Shift, action: Copy }
+  - { key: Key0, mods: Control, action: ResetFontSize }
+  - { key: Equals, mods: Control, action: IncreaseFontSize }
+  - { key: Minus, mods: Control, action: DecreaseFontSize }
+  - { key: PageUp, mods: Shift, action: ScrollPageUp, mode: ~Alt }
+  - { key: PageDown, mods: Shift, action: ScrollPageDown, mode: ~Alt }
+  - { key: Home, mods: Shift, action: ScrollToTop, mode: ~Alt }
+  - { key: End, mods: Shift, action: ScrollToBottom, mode: ~Alt }

@@ -8,6 +8,10 @@ alias ll="exa -lah --icons --color automatic --no-user --no-time --git --group-d
 alias ..="cd .."
 alias ...="cd ../.."
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+bindkey -s ^f "tmux-sessionizer\n"
+
+export TERM="alacritty"
+export EDITOR="nvim"
+export VISUAL="nvim"
 
 eval "$(starship init zsh)"
