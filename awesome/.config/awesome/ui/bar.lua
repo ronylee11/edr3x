@@ -60,18 +60,10 @@ battery_timer:start()
 helpers.add_hover_cursor(action_icon, "hand1")
 
 screen.connect_signal("request::desktop_decoration", function(s)
-<<<<<<< HEAD
 
     awful.tag({ " ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", " ﭮ ", "  " }, s,
         awful.layout.layouts[1])
 
-=======
-    awful.tag(
-        { " ", "  ", " 󰙯 ", "  ", " 󰘳 ", "  ", " 󱙋 ", " 󱘗 ", "  " },
-        s,
-        awful.layout.layouts[1]
-    )
->>>>>>> master
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
 
