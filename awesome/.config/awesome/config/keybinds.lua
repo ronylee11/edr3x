@@ -36,21 +36,36 @@ awful.keyboard.append_global_keybindings({
 
     awful.key({ modkey, "Shift" }, "q", awesome.quit, { description = "quit awesome", group = "awesome" }),
 
+    -- Audio
+    awful.key({}, "XF86AudioRaiseVolume",
+        function() volume.increase() end,
+        { description = "increase volume", group = "control" }),
+
+    awful.key({}, "XF86AudioLowerVolume",
+        function() volume.decrease() end,
+        { description = "decrease volume", group = "control" }),
+
+    awful.key({}, "XF86AudioMute",
+        function() volume.mute() end,
+        { description = "mute volume", group = "control" }),
+
+        -- Brightness
+	awful.key({}, "XF86MonBrightnessUp",
+        function() brightness.increase() end,
+        { description = "increase brightness", group = "control" }),
+	awful.key({}, "XF86MonBrightnessDown",
+        function() brightness.decrease() end,
+        { description = "decrease brightness", group = "control" }),
+
     -- Screenshot
-    awful.key(
-        { modkey },
-        "Print",
-        scrot_full,
-        { description = "Take a screenshot of entire screen", group = "screenshot" }
-    ),
-    awful.key({}, "Print", scrot_selection, { description = "Take a screenshot of selection", group = "screenshot" }),
-    awful.key(
-        { "Shift" },
-        "Print",
-        scrot_window,
-        { description = "Take a screenshot of focused window", group = "screenshot" }
-    ),
-    awful.key({ "Ctrl" }, "Print", scrot_delay, { description = "Take a screenshot of delay", group = "screenshot" }),
+    awful.key({ modkey }, "Print", scrot_full,
+        { description = "Take a screenshot of entire screen", group = "screenshot" }),
+    awful.key({}, "Print", scrot_selection,
+        { description = "Take a screenshot of selection", group = "screenshot" }),
+    awful.key({ "Shift" }, "Print", scrot_window,
+        { description = "Take a screenshot of focused window", group = "screenshot" }),
+    awful.key({ "Ctrl" }, "Print", scrot_delay,
+        { description = "Take a screenshot of delay", group = "screenshot" }),
 
     -- Display
     awful.key({ modkey, "Control" }, "p",
