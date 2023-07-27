@@ -56,8 +56,8 @@ theme.fg_focus    = "#D9D7D6"
 theme.fg_urgent   = "#D9D7D6"
 theme.fg_minimize = "#D9D7D6"
 
-theme.useless_gap         = dpi(7)
-theme.border_width        = dpi(2)
+theme.useless_gap         = dpi(6)
+theme.border_width        = dpi(0)
 theme.border_color_normal = "#505050"
 theme.border_color_active = "#00CED1"
 theme.border_color_marked = "#91231c"
